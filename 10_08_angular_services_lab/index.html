@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="todosApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" >
+  <script src="./js/app.js"></script>
+	<script src="./js/TodosController.js"></script>
+  <link href="./css/styles.css" rel="stylesheet" type="text/css">
+
+</head>
+<body ng-controller="TodosController">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="todolist not-done">
+             <h1>Todos</h1>
+
+             <form class="form-inline" ng-submit="add()">
+               <label class="sr-only" for="newTodo.task">Name</label>
+               <input class="form-control" type="text" placeholder="Enter todo here" ng-model="newTodo.task" />
+               <label class="sr-only" for="newTodo">Submit</label>
+               <input class="btn btn-default" type="submit"/>
+             </form>
+
+
+                    <h4>You have {{all.length}} todos left to do.</h4>
+
+                    <hr>
+                    <ul id="sortable" class="list-unstyled">
+                    <li class="ui-state-default"  ng-repeat="todo in all">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="todo.task" value="" />{{todo.task}}</label>
+                        </div>
+                    </li>
+
+                </ul>
+                <div class="todo-footer">
+                    <strong><span class="count-todos"></span></strong> Items Left
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="todolist">
+             <h1>Already Done</h1>
+                <ul id="done-items" class="list-unstyled">
+                    <li>Some item <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
